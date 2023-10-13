@@ -1,8 +1,8 @@
 source "azure-arm" "vm" {
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-  subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
+  client_id       = var.arm_client_id
+  client_secret   = var.arm_client_secret
+  subscription_id = var.arm_subscription_id
+  tenant_id       = var.arm_tenant_id
 
   location                          = var.azure_primary_location
   managed_image_name                = "${var.image_name}-${var.image_version}"
