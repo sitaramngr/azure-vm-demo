@@ -7,6 +7,9 @@ source "azure-arm" "vm" {
   location                          = var.azure_primary_location
   managed_image_name                = "${var.image_name}-${var.image_version}"
   managed_image_resource_group_name = var.resource_group_name
+  image_offer                       = "0001-com-ubuntu-server-jammy"
+  image_publisher                   = "canonical"
+  image_sku                         = "22_04-lts"
 
   communicator                      = "ssh"
   os_type                           = "Linux"
