@@ -1,6 +1,6 @@
 application_name       = "fleet-ops"
 environment_name       = "dev"
-primary_region         = "uswest"
+primary_region         = "westus"
 frontend_image_name    = "fleetops-frontend-2023.10.91"
 frontend_instance_type = "Standard_DS2_v2"
 backend_image_name     = "fleetops-backend-2023.10.4"
