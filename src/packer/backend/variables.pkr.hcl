@@ -20,3 +20,12 @@ variable "image_version" {
 variable "agent_ipaddress" {
   type = string
 }
+variable "azure_primary_location" {
+  type = string
+}
+variable "vm_size" {
+  type = string
+}
+variable "resource_group_name" {
+  type = string
+}

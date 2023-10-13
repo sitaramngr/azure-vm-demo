@@ -1,3 +1,4 @@
-image_name         = "frontend"
-aws_primary_region = "us-west-2"
-aws_instance_type  = "t2.small"
+image_name             = "fleetops-frontend"
+azure_primary_location = "westus"
+vm_size                = "Standard_DS2_v2"
+resource_group_name    = "rg-packer"
