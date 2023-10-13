@@ -1,3 +1,4 @@
+/*
 resource "tls_private_key" "ssh" {
   algorithm = "RSA"
   rsa_bits  = 4096
@@ -17,3 +18,4 @@ resource "azurerm_key_vault_secret" "ssh_public_key" {
 
   depends_on = [azurerm_role_assignment.terraform_keyvault]
 }
+*/
