@@ -29,3 +29,4 @@ variable "vm_size" {
 variable "resource_group_name" {
   type = string
 }
+# do it
