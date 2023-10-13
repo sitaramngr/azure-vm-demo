@@ -2,7 +2,7 @@ resource "tls_private_key" "ssh" {
   algorithm = "RSA"
   rsa_bits  = 4096
 }
-
+# do
 resource "azurerm_key_vault_secret" "ssh_private_key" {
   name         = "ssh-private-key"
   value        = tls_private_key.ssh.private_key_openssh
