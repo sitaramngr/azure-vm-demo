@@ -61,5 +61,5 @@ resource "azurerm_lb_rule" "frontend_http" {
   backend_port                   = 5000
   frontend_ip_configuration_name = "PublicIPAddress"
   probe_id                       = azurerm_lb_probe.frontend_probe_http.id
-  disable_outbound_snat          = false
+  disable_outbound_snat          = true
 }
