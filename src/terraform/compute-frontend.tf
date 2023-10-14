@@ -31,7 +31,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
   admin_ssh_key {
     username   = var.admin_username
-    public_key = tls_private_key.ssh.public_key_pem
+    public_key = tls_private_key.ssh.public_key_openssh
   }
 
   os_disk {
