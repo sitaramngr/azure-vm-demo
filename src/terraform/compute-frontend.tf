@@ -1,5 +1,5 @@
-/*
-resource "azurerm_network_interface" "main" {
+
+resource "azurerm_network_interface" "frontend" {
   name                = "example-nic"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
@@ -11,7 +11,7 @@ resource "azurerm_network_interface" "main" {
   }
 }
 
-resource "azurerm_linux_virtual_machine" "main" {
+resource "azurerm_linux_virtual_machine" "frontend" {
   name                = "vm-machine"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
