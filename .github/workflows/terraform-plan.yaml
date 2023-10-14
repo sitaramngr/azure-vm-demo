@@ -11,6 +11,8 @@ on:
 env:
   TERRAFORM_VERSION: '1.5.7'
   WORKING_DIRECTORY: "./src/terraform"
+  APPLICATION_NAME: fleet-ops
+  ENVIRONMENT_NAME: dev
 
 jobs:
 
