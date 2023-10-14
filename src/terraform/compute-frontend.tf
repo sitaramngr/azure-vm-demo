@@ -26,7 +26,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
   zone                = count.index
 
   network_interface_ids = [
-    azurerm_network_interface.main[count.index].id
+    azurerm_network_interface.frontend[count.index].id
   ]
 
   admin_ssh_key {
