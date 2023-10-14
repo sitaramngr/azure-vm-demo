@@ -3,7 +3,7 @@ resource "azurerm_network_interface" "frontend" {
 
   count = var.az_count
 
-  name                = "nic-${var.application_name}-${var.environment_name}"
+  name                = "nic-${var.application_name}-${var.environment_name}-node${count.index}"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
@@ -18,7 +18,7 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
   count = var.az_count
 
-  name                = "vm-${var.application_name}-${var.environment_name}${count.index}"
+  name                = "vm-${var.application_name}-${var.environment_name}-node${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   size                = "Standard_F2"
