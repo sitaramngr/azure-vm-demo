@@ -12,6 +12,12 @@ resource "azurerm_subnet" "frontend" {
   address_prefixes     = [cidrsubnet(var.vpc_cidr_block, 2, 1)]
 
 }
+
+resource "azurerm_subnet_network_security_group_association" "frontend" {
+  subnet_id                 = azurerm_subnet.frontend.id
+  network_security_group_id = azurerm_network_security_group.frontend.id
+}
+
 /*
 resource "azurerm_subnet" "backend" {
   name                 = "snet-backend"
