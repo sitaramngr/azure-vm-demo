@@ -23,7 +23,6 @@ resource "azurerm_lb_backend_address_pool" "frontend" {
   name            = "frontend-pool"
 }
 
-/*
 resource "azurerm_lb_outbound_rule" "main" {
   name                    = "OutboundRule"
   loadbalancer_id         = azurerm_lb.frontend.id
@@ -34,7 +33,6 @@ resource "azurerm_lb_outbound_rule" "main" {
     name = "PublicIPAddress"
   }
 }
-*/
 
 # Connects this Virtual Machine to the Load Balancer's Backend Address Pool
 resource "azurerm_network_interface_backend_address_pool_association" "frontend" {
@@ -63,4 +61,5 @@ resource "azurerm_lb_rule" "frontend_http" {
   backend_port                   = 5000
   frontend_ip_configuration_name = "PublicIPAddress"
   probe_id                       = azurerm_lb_probe.frontend_probe_http.id
+  disable_outbound_snat          = false
 }
