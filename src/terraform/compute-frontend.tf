@@ -1,4 +1,4 @@
-
+/*
 resource "azurerm_network_interface" "frontend" {
   name                = "example-nic"
   location            = azurerm_resource_group.main.location
