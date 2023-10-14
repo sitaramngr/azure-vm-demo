@@ -5,6 +5,7 @@ resource "azurerm_virtual_network" "main" {
   address_space       = [var.vpc_cidr_block]
 }
 
+/*
 resource "azurerm_subnet" "frontend" {
   name                 = "snet-frontend"
   resource_group_name  = azurerm_resource_group.main.name
@@ -12,7 +13,6 @@ resource "azurerm_subnet" "frontend" {
   address_prefixes     = [cidrsubnet(var.vpc_cidr_block, 2, 1)]
 
 }
-/*
 resource "azurerm_subnet" "backend" {
   name                 = "snet-backend"
   resource_group_name  = azurerm_resource_group.main.name
