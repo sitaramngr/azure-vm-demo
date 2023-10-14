@@ -25,7 +25,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "frontend"
   count = var.az_count
 
   network_interface_id    = azurerm_network_interface.frontend[count.index].id
-  ip_configuration_name   = "frontend${count.index}"
+  ip_configuration_name   = "internal"
   backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
 
 }
