@@ -1,9 +1,9 @@
-/*
+
 resource "azurerm_subnet" "bastion" {
   name                 = "AzureBastionSubnet"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = ["192.168.1.224/27"]
+  address_prefixes     = [cidrsubnet(var.vpc_cidr_block, 2, 0)]
 }
 
 resource "azurerm_public_ip" "bastion" {
@@ -25,4 +25,3 @@ resource "azurerm_bastion_host" "main" {
     public_ip_address_id = azurerm_public_ip.bastion.id
   }
 }
-*/
