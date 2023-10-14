@@ -11,7 +11,7 @@ env:
 
 jobs:
 
-  terraform-apply:
+  terraform-destroy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -22,8 +22,8 @@ jobs:
       with:
         version: ${{ env.TERRAFORM_VERSION }}
 
-    - id: apply
-      name: Terraform Apply
+    - id: destroy
+      name: Terraform Destroy
       env:
         ARM_SUBSCRIPTION_ID: ${{ vars.ARM_SUBSCRIPTION_ID }}
         ARM_TENANT_ID: ${{ vars.ARM_TENANT_ID }}
