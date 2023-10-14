@@ -18,12 +18,12 @@ resource "azurerm_linux_virtual_machine" "frontend" {
 
   count = var.az_count
 
-  name                = "vm-${var.application_name}-${var.environment_name}"
+  name                = "vm-${var.application_name}-${var.environment_name}${count.index}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   size                = "Standard_F2"
   admin_username      = var.admin_username
-  zone                = count.index
+  zone                = count.index + 1
 
   network_interface_ids = [
     azurerm_network_interface.frontend[count.index].id
