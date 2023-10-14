@@ -8,3 +8,4 @@ backend_instance_type  = "Standard_DS2_v2"
 domain_name            = "cloud-stack.io"
 vpc_cidr_block         = "10.0.0.0/23"
 az_count               = 2
+admin_username         = "adminuser"

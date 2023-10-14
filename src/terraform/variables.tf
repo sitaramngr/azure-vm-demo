@@ -28,3 +28,6 @@ variable "vpc_cidr_block" {
 variable "az_count" {
   type = number
 }
+variable "admin_username" {
+  type = string
+}

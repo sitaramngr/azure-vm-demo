@@ -1,29 +1,37 @@
-/*
+
 resource "azurerm_network_interface" "frontend" {
-  name                = "example-nic"
+
+  count = var.az_count
+
+  name                = "nic-${var.application_name}-${var.environment_name}"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.example.id
+    subnet_id                     = azurerm_subnet.frontend.id
     private_ip_address_allocation = "Dynamic"
   }
 }
 
 resource "azurerm_linux_virtual_machine" "frontend" {
-  name                = "vm-machine"
+
+  count = var.az_count
+
+  name                = "vm-${var.application_name}-${var.environment_name}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   size                = "Standard_F2"
-  admin_username      = "adminuser"
+  admin_username      = var.admin_username
+  zone                = count.index
+
   network_interface_ids = [
-    azurerm_network_interface.main.id,
+    azurerm_network_interface.main[count.index].id
   ]
 
   admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
+    username   = var.admin_username
+    public_key = tls_private_key.ssh.public_key_pem
   }
 
   os_disk {
@@ -37,5 +45,5 @@ resource "azurerm_linux_virtual_machine" "frontend" {
     sku       = "20_04-lts"
     version   = "latest"
   }
+
 }
-*/
