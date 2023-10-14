@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "main" {
 }
 
 locals {
-  subnet_address_space = cidrsubnet(var.vpc_cidr_block, 6, 6)
+  subnet_address_space = cidrsubnet(var.vpc_cidr_block, 4, 0)
 }
 /*
 resource "azurerm_subnet" "frontend" {
