@@ -7,12 +7,6 @@ variable "environment_name" {
 variable "primary_region" {
   type = string
 }
-variable "frontend_image_name" {
-  type = string
-}
-variable "frontend_instance_type" {
-  type = string
-}
 variable "backend_image_name" {
   type = string
 }
@@ -29,5 +23,14 @@ variable "az_count" {
   type = number
 }
 variable "admin_username" {
+  type = string
+}
+variable "frontend_image" {
+  type = object({
+    name                = string
+    resource_group_name = string
+  })
+}
+variable "frontend_instance_type" {
   type = string
 }

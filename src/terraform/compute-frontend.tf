@@ -1,4 +1,9 @@
 
+data "azurerm_image" "frontend" {
+  name                = var.frontend_image.name
+  resource_group_name = var.frontend_image.resource_group_name
+}
+
 resource "azurerm_network_interface" "frontend" {
 
   count = var.az_count
@@ -38,12 +43,14 @@ resource "azurerm_linux_virtual_machine" "frontend" {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
-
+  /*
   source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-focal"
     sku       = "20_04-lts"
     version   = "latest"
-  }
+  }*/
+
+  source_image_id = data.azurerm_image.frontend.id
 
 }

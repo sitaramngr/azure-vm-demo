@@ -1,7 +1,10 @@
-application_name       = "fleet-ops"
-environment_name       = "dev"
-primary_region         = "westus2"
-frontend_image_name    = "fleetops-frontend-2023.10.91"
+application_name = "fleet-ops"
+environment_name = "dev"
+primary_region   = "westus2"
+frontend_image = {
+  name                = "fleetops-frontend-2023.10.5"
+  resource_group_name = "rg-packer"
+}
 frontend_instance_type = "Standard_DS2_v2"
 backend_image_name     = "fleetops-backend-2023.10.4"
 backend_instance_type  = "Standard_DS2_v2"
