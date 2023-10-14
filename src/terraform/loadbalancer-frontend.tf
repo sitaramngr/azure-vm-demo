@@ -51,3 +51,13 @@ resource "azurerm_lb_probe" "frontend_probe_http" {
   port            = 5000
   request_path    = "/"
 }
+
+resource "azurerm_lb_rule" "frontend_http" {
+  loadbalancer_id                = azurerm_lb.frontend.id
+  name                           = "HTTP"
+  protocol                       = "Tcp"
+  frontend_port                  = 80
+  backend_port                   = 5000
+  frontend_ip_configuration_name = "PublicIPAddress"
+  probe_id                       = azurerm_lb_probe.frontend_probe_http.id
+}
