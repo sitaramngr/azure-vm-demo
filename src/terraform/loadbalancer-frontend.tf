@@ -6,7 +6,7 @@ resource "azurerm_public_ip" "frontend_load_balancer" {
   allocation_method   = "Static"
   sku                 = "Standard"
 }
-/*
+
 resource "azurerm_lb" "frontend" {
   name                = "lb-${var.application_name}-${var.environment_name}-frontend"
   location            = azurerm_resource_group.main.location
@@ -40,4 +40,3 @@ resource "azurerm_lb_nat_rule" "frontend_http" {
   backend_port                   = 5000
   frontend_ip_configuration_name = "PublicIPAddress"
 }
-*/
