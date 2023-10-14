@@ -19,6 +19,7 @@ resource "azurerm_network_interface" "frontend" {
   }
 }
 
+/*
 # Connects this Virtual Machine to the Load Balancer's Backend Address Pool
 resource "azurerm_network_interface_backend_address_pool_association" "frontend" {
 
@@ -29,6 +30,7 @@ resource "azurerm_network_interface_backend_address_pool_association" "frontend"
   backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
 
 }
+*/
 
 resource "azurerm_linux_virtual_machine" "frontend" {
 
