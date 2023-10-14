@@ -21,3 +21,19 @@ resource "azurerm_network_security_rule" "frontend_http" {
   destination_address_prefixes = azurerm_subnet.frontend.address_prefixes
 
 }
+
+resource "azurerm_network_security_rule" "frontend_http_internal" {
+
+  resource_group_name          = azurerm_resource_group.main.name
+  network_security_group_name  = azurerm_network_security_group.frontend.name
+  name                         = "allow-http-internal"
+  priority                     = "2005"
+  access                       = "Allow"
+  direction                    = "Inbound"
+  protocol                     = "Tcp"
+  source_port_range            = "*"
+  destination_port_range       = "5000"
+  source_address_prefix        = "*"
+  destination_address_prefixes = azurerm_subnet.frontend.address_prefixes
+
+}
