@@ -1,8 +1,8 @@
 
 resource "azurerm_public_ip" "frontend_load_balancer" {
-  name                = "PublicIPForLB"
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
+  name                = "pip-lb-${var.application_name}-${var.environment_name}-frontend"
+  location            = azurerm_resource_group.main.location
+  resource_group_name = azurerm_resource_group.main.name
   allocation_method   = "Static"
 }
 
