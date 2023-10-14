@@ -19,9 +19,8 @@ resource "azurerm_lb" "frontend" {
   }
 }
 resource "azurerm_lb_backend_address_pool" "frontend" {
-  loadbalancer_id    = azurerm_lb.frontend.id
-  name               = "frontend-pool"
-  virtual_network_id = azurerm_virtual_network.main.id
+  loadbalancer_id = azurerm_lb.frontend.id
+  name            = "frontend-pool"
 }
 
 # connects the Backend Address Pool to the Load Balancer's Frontend IP Configuration
