@@ -47,6 +47,7 @@ resource "azurerm_lb_nat_rule" "frontend_http" {
 resource "azurerm_lb_probe" "frontend_probe_http" {
   loadbalancer_id = azurerm_lb.frontend.id
   name            = "http"
+  protocol        = "Http"
   port            = 5000
   request_path    = "/"
 }
