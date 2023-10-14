@@ -6,5 +6,5 @@ frontend_instance_type = "Standard_DS2_v2"
 backend_image_name     = "fleetops-backend-2023.10.4"
 backend_instance_type  = "Standard_DS2_v2"
 domain_name            = "cloud-stack.io"
-vpc_cidr_block         = "10.0.0.0/22"
+vpc_cidr_block         = "10.0.0.0/23"
 az_count               = 2
