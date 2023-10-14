@@ -23,11 +23,15 @@ resource "azurerm_lb_backend_address_pool" "frontend" {
   name            = "frontend-pool"
 }
 
-# connects the Backend Address Pool to the Load Balancer's Frontend IP Configuration
-resource "azurerm_lb_backend_address_pool_address" "frontend" {
-  name                                = "frontend-pool-address"
-  backend_address_pool_id             = azurerm_lb_backend_address_pool.frontend.id
-  backend_address_ip_configuration_id = azurerm_lb.frontend.frontend_ip_configuration[0].id
+# Connects this Virtual Machine to the Load Balancer's Backend Address Pool
+resource "azurerm_network_interface_backend_address_pool_association" "frontend" {
+
+  count = var.az_count
+
+  network_interface_id    = azurerm_network_interface.frontend[count.index].id
+  ip_configuration_name   = "internal"
+  backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
+
 }
 
 resource "azurerm_lb_nat_rule" "frontend_http" {
