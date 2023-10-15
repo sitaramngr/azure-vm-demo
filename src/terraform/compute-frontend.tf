@@ -60,7 +60,7 @@ data "cloudinit_config" "frontend" {
                    write_files:
                      - path: /etc/profile.d/backend_endpoint.sh
                        content: |
-                         export BackendEndpoint="http://${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}"
+                         export DOTNET_BackendEndpoint="http://${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}"
                    EOF
   }
 }
