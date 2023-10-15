@@ -26,7 +26,6 @@ resource "azurerm_network_security_rule" "frontend_http" {
   source_port_range                          = "*"
   destination_port_range                     = "5000"
   source_address_prefix                      = "*"
-  destination_address_prefix                 = "*"
   destination_application_security_group_ids = [azurerm_application_security_group.frontend.id]
 
 }

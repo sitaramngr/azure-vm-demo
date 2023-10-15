@@ -8,6 +8,7 @@ resource "azurerm_lb" "backend" {
   frontend_ip_configuration {
     name      = "PrivateIP"
     subnet_id = azurerm_subnet.backend.id
+    zones     = [1, 2, 3]
   }
 }
 resource "azurerm_lb_backend_address_pool" "backend" {

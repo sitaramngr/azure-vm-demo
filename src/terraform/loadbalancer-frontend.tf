@@ -17,7 +17,6 @@ resource "azurerm_lb" "frontend" {
   frontend_ip_configuration {
     name                 = "PublicIPAddress"
     public_ip_address_id = azurerm_public_ip.frontend.id
-    zones                = [1, 2, 3]
   }
 }
 resource "azurerm_lb_backend_address_pool" "frontend" {
