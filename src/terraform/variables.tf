@@ -10,7 +10,7 @@ variable "primary_region" {
 variable "domain_name" {
   type = string
 }
-variable "vpc_cidr_block" {
+variable "vnet_cidr_block" {
   type = string
 }
 variable "az_count" {
