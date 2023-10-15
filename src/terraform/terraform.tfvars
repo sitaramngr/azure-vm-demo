@@ -6,7 +6,10 @@ frontend_image = {
   resource_group_name = "rg-packer"
 }
 frontend_instance_type = "Standard_DS2_v2"
-backend_image_name     = "fleetops-backend-2023.10.4"
+backend_image = {
+  name                = "fleetops-backend-2023.10.5"
+  resource_group_name = "rg-packer"
+}
 backend_instance_type  = "Standard_DS2_v2"
 domain_name            = "cloud-stack.io"
 vpc_cidr_block         = "10.0.0.0/22"
