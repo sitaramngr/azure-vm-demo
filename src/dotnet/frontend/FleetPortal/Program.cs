@@ -1,6 +1,8 @@
 using FleetPortal.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,14 +10,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddHttpClient();
+builder.Services.AddSingleton<FleetPortalBackendConfig>(sp => 
+{
+    var configuration = sp.GetRequiredService<IConfiguration>();
+    var backendEndpoint = configuration.GetValue<string>("BackendEndpoint");
 
-builder.Services.AddSingleton(new FleetPortalBackendConfig() 
-    { 
-        Endpoint = Environment.GetEnvironmentVariable("BackendEndpoint") 
-    }
-);
+    return new FleetPortalBackendConfig()
+    {
+        Endpoint = backendEndpoint
+    };
+});
 
 var app = builder.Build();
 
@@ -27,7 +32,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
@@ -36,6 +41,7 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 // Make sure we listen to any hostname
-app.Urls.Add("http://*:5000");
+var defaultPort = app.Configuration.GetValue<string>("DefaultPort");
+app.Urls.Add($"http://*:{defaultPort}");
 
 app.Run();

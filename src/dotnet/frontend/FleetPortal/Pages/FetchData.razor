@@ -2,8 +2,11 @@
 
 <PageTitle>Weather forecast</PageTitle>
 
-@using FleetPortal.Data
-@inject WeatherForecastService ForecastService
+@using System.Linq;
+@using FleetAPI;
+@using FleetPortal.Data;
+@inject HttpClient HttpClient
+@inject FleetPortalBackendConfig BackendConfig
 
 <h1>Weather forecast</h1>
 
@@ -28,7 +31,7 @@ else
             @foreach (var forecast in forecasts)
             {
                 <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.Date.UtcDateTime.ToShortDateString()</td>
                     <td>@forecast.TemperatureC</td>
                     <td>@forecast.TemperatureF</td>
                     <td>@forecast.Summary</td>
@@ -43,6 +46,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+        var client = new FleetAPIClient(BackendConfig.Endpoint, HttpClient);
+        var result = await client.GetWeatherForecastAsync();
+        forecasts = result.ToArray();
     }
 }
