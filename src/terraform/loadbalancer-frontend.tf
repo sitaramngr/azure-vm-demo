@@ -17,6 +17,11 @@ resource "azurerm_lb" "frontend" {
     name                 = "PublicIPAddress"
     public_ip_address_id = azurerm_public_ip.frontend_load_balancer.id
   }
+
+  frontend_ip_configuration {
+    name      = "BackendAPI"
+    subnet_id = azurerm_subnet.backend.id
+  }
 }
 resource "azurerm_lb_backend_address_pool" "frontend" {
   loadbalancer_id = azurerm_lb.frontend.id
