@@ -19,6 +19,15 @@ resource "azurerm_network_interface" "frontend" {
   }
 }
 
+resource "azurerm_network_interface_application_security_group_association" "frontend" {
+
+  count = var.az_count
+
+  network_interface_id          = azurerm_network_interface.frontend[count.index].id
+  application_security_group_id = azurerm_application_security_group.frontend.id
+
+}
+
 resource "azurerm_linux_virtual_machine" "frontend" {
 
   count = var.az_count
