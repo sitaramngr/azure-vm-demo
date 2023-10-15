@@ -22,6 +22,7 @@ resource "azurerm_network_security_rule" "frontend_http" {
 
 }
 
+/*
 resource "azurerm_network_security_rule" "frontend_http_internal" {
 
   resource_group_name         = azurerm_resource_group.main.name
@@ -37,3 +38,4 @@ resource "azurerm_network_security_rule" "frontend_http_internal" {
   destination_address_prefix  = "*"
 
 }
+*/
