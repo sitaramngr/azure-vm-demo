@@ -22,6 +22,6 @@ resource "azurerm_subnet" "backend" {
   name                 = "snet-backend"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes     = [cidrsubnet(var.vpc_cidr_block, 2, 1)]
+  address_prefixes     = [cidrsubnet(var.vpc_cidr_block, 2, 2)]
 
 }
