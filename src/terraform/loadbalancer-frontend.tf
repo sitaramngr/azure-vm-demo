@@ -34,7 +34,7 @@ resource "azurerm_lb_outbound_rule" "main" {
   }
 }
 
-/*
+
 # Connects this Virtual Machine to the Load Balancer's Backend Address Pool
 resource "azurerm_network_interface_backend_address_pool_association" "frontend" {
 
@@ -45,8 +45,8 @@ resource "azurerm_network_interface_backend_address_pool_association" "frontend"
   backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
 
 }
-*/
 
+/*
 resource "azurerm_lb_backend_address_pool_address" "frontend" {
 
   count = var.az_count
@@ -55,7 +55,7 @@ resource "azurerm_lb_backend_address_pool_address" "frontend" {
   backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
   virtual_network_id      = azurerm_virtual_network.main.id
   ip_address              = azurerm_network_interface.frontend[count.index].private_ip_address
-}
+}*/
 
 resource "azurerm_lb_probe" "frontend_probe_http" {
   loadbalancer_id = azurerm_lb.frontend.id
