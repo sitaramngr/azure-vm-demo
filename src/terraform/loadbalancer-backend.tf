@@ -15,17 +15,6 @@ resource "azurerm_lb_backend_address_pool" "backend" {
   name            = "backend-pool"
 }
 
-resource "azurerm_lb_outbound_rule" "backend" {
-  name                    = "OutboundRule"
-  loadbalancer_id         = azurerm_lb.backend.id
-  protocol                = "Tcp"
-  backend_address_pool_id = azurerm_lb_backend_address_pool.backend.id
-
-  frontend_ip_configuration {
-    name = "PrivateIP"
-  }
-}
-
 # Connects this Virtual Machine to the Load Balancer's Backend Address Pool
 resource "azurerm_network_interface_backend_address_pool_association" "backend" {
 
