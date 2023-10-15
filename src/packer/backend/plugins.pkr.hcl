@@ -1,8 +1,8 @@
 packer {
   required_plugins {
-    amazon = {
-      source  = "github.com/hashicorp/amazon"
-      version = "~> 1.2.6"
+    azure = {
+      source  = "github.com/hashicorp/azure"
+      version = "~> 2.0.0"
     }
   }
 }
