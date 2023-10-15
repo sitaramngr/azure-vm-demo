@@ -1,5 +1,5 @@
 output "frontend_public_ip_address" {
-  value = azurerm_public_ip.frontend_load_balancer.ip_address
+  value = azurerm_public_ip.frontend.ip_address
 }
 
 output "backend_private_ip_address" {
