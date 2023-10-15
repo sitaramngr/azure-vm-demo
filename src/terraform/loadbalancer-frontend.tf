@@ -53,6 +53,7 @@ resource "azurerm_lb_backend_address_pool_address" "frontend" {
 
   name                    = "frontend${count.index}"
   backend_address_pool_id = azurerm_lb_backend_address_pool.frontend.id
+  virtual_network_id      = azurerm_virtual_network.main.id
   ip_address              = azurerm_network_interface.frontend[count.index].private_ip_address
 }
 
@@ -72,5 +73,6 @@ resource "azurerm_lb_rule" "frontend_http" {
   backend_port                   = 5000
   frontend_ip_configuration_name = "PublicIPAddress"
   probe_id                       = azurerm_lb_probe.frontend_probe_http.id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.frontend.id]
   disable_outbound_snat          = true
 }
