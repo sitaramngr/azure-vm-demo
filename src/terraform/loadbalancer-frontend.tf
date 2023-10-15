@@ -5,6 +5,7 @@ resource "azurerm_public_ip" "frontend_load_balancer" {
   resource_group_name = azurerm_resource_group.main.name
   allocation_method   = "Static"
   sku                 = "Standard"
+  zones               = [1, 2, 3]
 }
 
 resource "azurerm_lb" "frontend" {

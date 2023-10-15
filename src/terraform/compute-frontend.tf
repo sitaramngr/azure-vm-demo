@@ -47,3 +47,19 @@ resource "azurerm_linux_virtual_machine" "frontend" {
   source_image_id = data.azurerm_image.frontend.id
 
 }
+
+data "cloudinit_config" "frontend" {
+  gzip          = false
+  base64_encode = true
+
+  part {
+    content_type = "text/cloud-config"
+    content      = <<-EOF
+                   #cloud-config
+                   write_files:
+                     - path: /etc/profile.d/backend_endpoint.sh
+                       content: |
+                         export BackendEndpoint="${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}"
+                   EOF
+  }
+}
