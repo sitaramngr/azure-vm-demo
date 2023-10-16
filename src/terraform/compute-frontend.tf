@@ -73,7 +73,8 @@ data "cloudinit_config" "frontend" {
                    EOF
   }
   part {
-    content_type = "text/cloud-config"
+    filename     = "1-update-service.sh"
+    content_type = "text/x-shellscript"
     content      = <<-EOF
       #!/bin/bash
       sed -i 's|BACKEND_PLACEHOLDER|${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}|g' /etc/systemd/system/myblazorapp.service
