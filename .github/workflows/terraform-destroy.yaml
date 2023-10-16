@@ -41,4 +41,4 @@ jobs:
           -backend-config="container_name=$BACKEND_STORAGE_CONTAINER_NAME" \
           -backend-config="key=$TF_BACKEND_KEY"
           
-        terraform apply -auto-approve
+        terraform destroy -auto-approve
