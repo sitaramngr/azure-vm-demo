@@ -64,4 +64,6 @@ resource "azurerm_lb_rule" "frontend_http" {
   probe_id                       = azurerm_lb_probe.frontend_probe_http.id
   backend_address_pool_ids       = [azurerm_lb_backend_address_pool.frontend.id]
   disable_outbound_snat          = true
+  enable_tcp_reset               = true
+  load_distribution              = "SourceIP"
 }
