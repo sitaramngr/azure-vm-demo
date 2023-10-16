@@ -19,7 +19,7 @@ builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
-builder.Services.AddTransient(sp => 
+builder.Services.AddSingleton(sp => 
 {
     var backendEndpoint = System.Environment.GetEnvironmentVariable("DOTNET_BACKEND_ENDPOINT");
 
