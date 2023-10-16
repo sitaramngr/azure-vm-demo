@@ -52,14 +52,8 @@ else
         errorMessage = $"INJECTED:{BackendConfig.Endpoint}";
         errorMessage += $"ENVVAR:{envVarValue}";
 
-        if (string.IsNullOrEmpty(BackendConfig.Endpoint))
-        {
-        } 
-        else
-        {
-            //var client = new FleetAPIClient(BackendConfig.Endpoint, HttpClient);
-            //var result = await client.GetWeatherForecastAsync();
-            //forecasts = result.ToArray();
-        }
+        var client = new FleetAPIClient(BackendConfig.Endpoint, HttpClient);
+        var result = await client.GetWeatherForecastAsync();
+        forecasts = result.ToArray();
     }
 }
