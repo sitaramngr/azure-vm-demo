@@ -14,6 +14,7 @@ User=myblazorapp-svc
 
 Environment=ASPNETCORE_ENVIRONMENT=Production
 Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+Environment=DOTNET_BACKEND_ENDPOINT=BACKEND_PLACEHOLDER
 
 [Install]
 WantedBy=multi-user.target

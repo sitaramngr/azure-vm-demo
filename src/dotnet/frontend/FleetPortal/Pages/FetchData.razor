@@ -52,7 +52,7 @@ else
 
         if (string.IsNullOrEmpty(BackendConfig.Endpoint))
         {
-            var envVarValue = System.Environment.GetEnvironmentVariable("DOTNET_BackendEndpoint");
+            var envVarValue = System.Environment.GetEnvironmentVariable("DOTNET_BACKEND_ENDPOINT");
             errorMessage += $"ENVVAR:{envVarValue}";
         } 
         else

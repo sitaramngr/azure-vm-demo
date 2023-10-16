@@ -21,7 +21,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddHttpClient();
 builder.Services.AddTransient(sp => 
 {
-    var backendEndpoint = System.Environment.GetEnvironmentVariable("DOTNET_BackendEndpoint");
+    var backendEndpoint = System.Environment.GetEnvironmentVariable("DOTNET_BACKEND_ENDPOINT");
 
     return new FleetPortalBackendConfig()
     {

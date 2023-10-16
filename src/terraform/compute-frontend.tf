@@ -69,7 +69,16 @@ data "cloudinit_config" "frontend" {
                    write_files:
                      - path: /etc/profile.d/backend_endpoint.sh
                        content: |
-                         export DOTNET_BackendEndpoint="http://${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}"
+                         export DOTNET_BACKEND_ENDPOINT="http://${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}"
                    EOF
+  }
+  part {
+    content_type = "text/cloud-config"
+    content      = <<-EOF
+      #!/bin/bash
+      sed -i 's|BACKEND_PLACEHOLDER|${azurerm_lb.backend.frontend_ip_configuration[0].private_ip_address}|g' /etc/systemd/system/myblazorapp.service
+      systemctl daemon-reload
+      systemctl restart myblazorapp.service
+    EOF
   }
 }
