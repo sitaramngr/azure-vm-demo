@@ -1,4 +1,4 @@
-name: Packer-Backend
+name: jfrogtest
 
 on:
   workflow_dispatch:
