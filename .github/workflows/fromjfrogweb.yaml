@@ -13,7 +13,7 @@ jobs:
        - name: Setup JFrog CLI
          uses: jfrog/setup-jfrog-cli@v3
          env:  
-           JF_URL: ${{ secrets.JF_URL }}
+           JF_URL: "https://sitaram1992.jfrog.io/artifactory/sitaram-npm/"
            JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
            
        - name: Setup Node npm
