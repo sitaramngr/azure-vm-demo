@@ -4,6 +4,7 @@ build {
     "source.azure-arm.vm"
   ]
 
+
   provisioner "file" {
     source = "./files/dotnet.pref"
     destination = "/tmp/dotnet.pref"
